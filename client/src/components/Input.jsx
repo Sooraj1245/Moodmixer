@@ -11,7 +11,7 @@ export default function Input(){
     const [hasError,setHasError]=useState(null);
     const [inputError, setInputError] = useState(false);
 
-
+    const BACKEND_URL=import.meta.env.VITE_BACKEND_URL;
     async function handleSubmit(data){
         setIsLoading(true);
         setHasError(null); 
@@ -25,7 +25,7 @@ export default function Input(){
         }
         setInputError(false)
         try{
-            const res=await axios.post("/api/submitData",{mood:moodData})
+            const res=await axios.post(`/api/submitData`,{mood:moodData})
             
             if (!res.data.errorMsg){
                 setResponse(res.data.recData);

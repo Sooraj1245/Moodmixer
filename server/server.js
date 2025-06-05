@@ -25,6 +25,7 @@ app.post("/api/submitData",async (req,res)=>{
         const {musicData,musicError}=await sendAPICall(moodArr);
         res.send(musicError?{...sysReply,errorMsg:musicError}:{...sysReply,recData:musicData})
     }catch(e){
+        console.log(e)
         res.send({...sysReply,errorMsg:e.message})
     }
 })
@@ -63,7 +64,7 @@ async function sendAPICall(m){
             }
             return acc;
         },[]);
-        
+
         const cleanedArray=combinedResultArray.map((trackDetails)=>({
             id:trackDetails.id,
             title:trackDetails.title,
@@ -72,6 +73,7 @@ async function sendAPICall(m){
         }));
         return {...sysReply,musicData:cleanedArray};
     }catch(e){
+        console.log(e)
         return {...sysReply,musicError:e.message};
     }
 };
