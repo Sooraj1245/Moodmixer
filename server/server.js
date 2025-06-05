@@ -2,14 +2,20 @@ import e from "express";
 import bodyParser from "body-parser";
 import {getMoodList} from "./aiHandler.js"
 import axios from "axios";
-
+import cors from "cors"
 
 const app= e();
 app.use(bodyParser.json())
 
 const port="5000"
 
-
+app.use(cors({
+    origin: [
+        'https://moodmixer-d67xlv04v-soorajs-projects-1d569588.vercel.app',
+        'http://localhost:5173',
+    ],
+    credentials: true
+}));
 app.post("/api/submitData",async (req,res)=>{
     const data=req.body;
     const sysReply={
