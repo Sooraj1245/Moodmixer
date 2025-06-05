@@ -6,13 +6,5 @@ export default defineConfig({
   plugins: [react()],
   assetsInclude:["**/*lottie"],
 
-  server:{
-    proxy:{
-      '/api':{
-        target:"https://moodmixer-backend.onrender.com",
-        changeOrigin:true,
-      }
-    },
-    
-  }
+
 })

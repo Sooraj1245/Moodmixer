@@ -25,7 +25,7 @@ export default function Input(){
         }
         setInputError(false)
         try{
-            const res=await axios.post(`/api/submitData`,{mood:moodData})
+            const res=await axios.post(`${BACKEND_URL}/api/submitData`,{mood:moodData})
             
             if (!res.data.errorMsg){
                 setResponse(res.data.recData);
