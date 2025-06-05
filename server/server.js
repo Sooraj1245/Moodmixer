@@ -11,7 +11,8 @@ const port="5000"
 
 app.use(cors({
     origin: [
-        'https://moodmixer-d67xlv04v-soorajs-projects-1d569588.vercel.app',
+        'https://moodmixer-one.vercel.app/',
+        
         'http://localhost:5173',
     ],
     credentials: true
