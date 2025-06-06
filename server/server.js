@@ -4,6 +4,7 @@ import {getMoodList} from "./aiHandler.js"
 import axios from "axios";
 import cors from "cors"
 
+
 const app= e();
 app.use(bodyParser.json())
 
@@ -17,6 +18,7 @@ app.use(cors({
     ]
 }));
 app.post("/api/submitData",async (req,res)=>{
+
     const data=req.body;
     const sysReply={
             recData:null,
@@ -27,6 +29,7 @@ app.post("/api/submitData",async (req,res)=>{
         const mood=data.mood;
         // const tempMood=["Serious","Sentimental","Romantic"];
         const moodList=await getMoodList(mood);
+        console.log(moodList)
         const moodArr=moodList.slice(1,-1).split(",");
         const {musicData,musicError}=await sendAPICall(moodArr);
         res.send(musicError?{...sysReply,errorMsg:musicError}:{...sysReply,recData:musicData})
