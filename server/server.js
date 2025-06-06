@@ -11,11 +11,10 @@ const port="5000"
 
 app.use(cors({
     origin: [
-        'https://moodmixer-one.vercel.app/',
+        'https://moodmixer-one.vercel.app',
         
         'http://localhost:5173',
-    ],
-    credentials: true
+    ]
 }));
 app.post("/api/submitData",async (req,res)=>{
     const data=req.body;
